@@ -1,0 +1,123 @@
+[
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": null,
+    "invitedByUserId": null,
+    "guildId": "1475088509831483545",
+    "userId": "1158927217015918632",
+    "_id": "8240b401-69b9-4e35-966f-8b31e20341a5",
+    "createdAt": "2026-02-22T12:48:23.819Z",
+    "updatedAt": "2026-02-22T13:29:32.263Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": null,
+    "invitedByUserId": null,
+    "guildId": "1474546348522078408",
+    "userId": "984316431183269909",
+    "_id": "28c9e9fe-9bf8-43ba-9224-faa1d42807ed",
+    "createdAt": "2026-02-22T13:32:02.041Z",
+    "updatedAt": "2026-02-22T13:43:25.045Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": null,
+    "invitedByUserId": null,
+    "guildId": "1474546348522078408",
+    "userId": "1158927217015918632",
+    "_id": "11fdff8c-c38e-47d0-a92e-21efb3fa0cab",
+    "createdAt": "2026-02-22T13:32:25.998Z",
+    "updatedAt": "2026-02-22T13:37:15.835Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": "a8ef82eb-a52a-405e-a981-ff66f188c82f",
+    "invitedByUserId": "984316431183269909",
+    "guildId": "1474546348522078408",
+    "userId": "1120153448801910794",
+    "_id": "06f47e5d-b3f7-40e5-9948-ba3f2645ba75",
+    "createdAt": "2026-02-22T13:32:25.999Z",
+    "updatedAt": "2026-02-22T13:32:26.001Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": "a8ef82eb-a52a-405e-a981-ff66f188c82f",
+    "invitedByUserId": "984316431183269909",
+    "guildId": "1474546348522078408",
+    "userId": "1031304506094395495",
+    "_id": "5a9191e9-0bdf-44f9-9073-89c5071c9762",
+    "createdAt": "2026-02-22T13:32:36.893Z",
+    "updatedAt": "2026-02-22T13:32:36.894Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": null,
+    "invitedByUserId": null,
+    "guildId": "1474546348522078408",
+    "userId": "1036655669421559859",
+    "_id": "1a7d093b-2f05-42da-8e4c-7cb6c677a2a6",
+    "createdAt": "2026-02-22T13:32:39.203Z",
+    "updatedAt": "2026-02-22T13:42:24.232Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": "a8ef82eb-a52a-405e-a981-ff66f188c82f",
+    "invitedByUserId": "984316431183269909",
+    "guildId": "1474546348522078408",
+    "userId": "1447303950339543183",
+    "_id": "d3dfe99f-6f15-447f-b6dd-c291f3d24aa4",
+    "createdAt": "2026-02-22T13:32:44.008Z",
+    "updatedAt": "2026-02-22T13:32:44.009Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": "a8ef82eb-a52a-405e-a981-ff66f188c82f",
+    "invitedByUserId": "984316431183269909",
+    "guildId": "1474546348522078408",
+    "userId": "783112895760302101",
+    "_id": "2c10bdd3-40b0-44f6-94fc-2bb869fcb0df",
+    "createdAt": "2026-02-22T13:32:53.839Z",
+    "updatedAt": "2026-02-22T13:32:53.840Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": "a8ef82eb-a52a-405e-a981-ff66f188c82f",
+    "invitedByUserId": "984316431183269909",
+    "guildId": "1474546348522078408",
+    "userId": "1065432981751222313",
+    "_id": "765482c2-80c7-4f59-afc8-2c2edac57979",
+    "createdAt": "2026-02-22T13:33:22.002Z",
+    "updatedAt": "2026-02-22T13:33:22.007Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": "7af00d7d-5376-4972-a9e7-3bd3f3e3acbf",
+    "invitedByUserId": "1036655669421559859",
+    "guildId": "1474546348522078408",
+    "userId": "747610212185145454",
+    "_id": "710af0f4-edbd-4fea-9a5a-99e9a2f9e1f4",
+    "createdAt": "2026-02-22T13:38:43.544Z",
+    "updatedAt": "2026-02-22T13:39:34.214Z"
+  },
+  {
+    "clanId": null,
+    "role": null,
+    "pendingInviteClanId": "7af00d7d-5376-4972-a9e7-3bd3f3e3acbf",
+    "invitedByUserId": "1036655669421559859",
+    "guildId": "1474546348522078408",
+    "userId": "801590592399474710",
+    "_id": "a1a7bd0d-525e-4a1f-8394-859e9dfb9181",
+    "createdAt": "2026-02-22T13:39:42.032Z",
+    "updatedAt": "2026-02-22T13:39:42.032Z"
+  }
+]

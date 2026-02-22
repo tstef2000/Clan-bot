@@ -1,0 +1,26 @@
+[
+  {
+    "clanMemberLimit": 8,
+    "logChannelId": "1475122233499324446",
+    "clanChannelsCategoryId": "1475122231490379777",
+    "clanLogsCategoryId": "1475122232555475197",
+    "guildId": "1475088509831483545",
+    "_id": "9f6a160e-8c4d-4fbc-a1d5-56c94f5129aa",
+    "createdAt": "2026-02-22T12:48:47.404Z",
+    "updatedAt": "2026-02-22T13:29:07.562Z",
+    "leaderRoleId": "1475122234203836529",
+    "coLeaderRoleId": "1475122234795233321"
+  },
+  {
+    "clanMemberLimit": 6,
+    "logChannelId": "1475122738778603531",
+    "clanChannelsCategoryId": "1475122736983707732",
+    "clanLogsCategoryId": "1475122738103582842",
+    "leaderRoleId": "1475122740007538768",
+    "coLeaderRoleId": "1475122741370683494",
+    "guildId": "1474546348522078408",
+    "_id": "71591658-8e36-4581-9437-cdff2a856b7c",
+    "createdAt": "2026-02-22T13:31:06.901Z",
+    "updatedAt": "2026-02-22T13:33:07.529Z"
+  }
+]

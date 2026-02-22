@@ -1,0 +1,27 @@
+{
+  "name": "rust-clan-manager-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for Rust clan management using discord.js v14 with file-based persistence",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "discord",
+    "discordjs",
+    "rust",
+    "clan",
+    "json",
+    "storage"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.21.0",
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
