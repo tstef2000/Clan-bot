@@ -552,7 +552,8 @@ module.exports = {
 
       if (sub === 'invisible') {
         await textChannel.permissionOverwrites.edit(everyoneRoleId, {
-          ViewChannel: false
+          ViewChannel: false,
+          SendMessages: false
         });
 
         await logClanEvent(guild, `${interaction.user.tag} hid clan channel for ${clanLabel(adminClan)} [${adminClan.tag}] from public.`);
@@ -564,7 +565,8 @@ module.exports = {
       } else {
         await textChannel.permissionOverwrites.edit(everyoneRoleId, {
           ViewChannel: true,
-          ReadMessageHistory: true
+          ReadMessageHistory: true,
+          SendMessages: false
         });
 
         await logClanEvent(guild, `${interaction.user.tag} made clan channel for ${clanLabel(adminClan)} [${adminClan.tag}] visible to public.`);

@@ -72,6 +72,21 @@ module.exports = {
     )
     .addSubcommand((sub) =>
       sub
+        .setName('force-invite')
+        .setDescription('Force add a user to a clan by name or tag')
+        .addUserOption((opt) =>
+          opt.setName('user').setDescription('User to force add').setRequired(true)
+        )
+        .addStringOption((opt) =>
+          opt
+            .setName('clan')
+            .setDescription('Clan name or clan tag')
+            .setRequired(true)
+            .setMaxLength(32)
+        )
+    )
+    .addSubcommand((sub) =>
+      sub
         .setName('setup')
         .setDescription('Create clan categories and configure clan log channel')
     ),
@@ -333,6 +348,121 @@ module.exports = {
 
       await interaction.editReply({
         embeds: [buildSuccessEmbed('Force Disband Complete', `Deleted **${clanLabel(clan)}** and all assets.`)]
+      });
+      return;
+    }
+
+    if (sub === 'force-invite') {
+      const target = interaction.options.getUser('user', true);
+      const query = interaction.options.getString('clan', true);
+      const cfg = await getOrCreateGuildConfig(guild.id);
+      const clan = await resolveClanByNameOrTag(guild.id, query);
+
+      if (!clan) {
+        await interaction.reply({
+          embeds: [buildErrorEmbed('No clan found with that name/tag.')],
+          ephemeral: true
+        });
+        return;
+      }
+
+      await interaction.deferReply({ ephemeral: true });
+
+      let targetDoc = await User.findOne({ guildId: guild.id, userId: target.id });
+      if (!targetDoc) {
+        targetDoc = await User.create({ guildId: guild.id, userId: target.id });
+      }
+
+      if (String(targetDoc.clanId) === String(clan._id)) {
+        await interaction.editReply({
+          embeds: [buildInfoEmbed('Already In Clan', `${target} is already in **${clanLabel(clan)}**.`)]
+        });
+        return;
+      }
+
+      let previousClanName = null;
+      if (targetDoc.clanId) {
+        const previousClan = await Clan.findById(targetDoc.clanId);
+        if (previousClan) {
+          previousClanName = clanLabel(previousClan);
+
+          if (previousClan.leaderId === target.id) {
+            await interaction.editReply({
+              embeds: [
+                buildErrorEmbed(
+                  'Cannot move a clan leader. Transfer leadership or disband that clan first.'
+                )
+              ]
+            });
+            return;
+          }
+
+          previousClan.coLeaderIds = previousClan.coLeaderIds.filter((id) => id !== target.id);
+          previousClan.memberIds = previousClan.memberIds.filter((id) => id !== target.id);
+          await previousClan.save();
+
+          const previousGuildMember = await guild.members.fetch(target.id).catch(() => null);
+          if (previousGuildMember && previousClan.roleId) {
+            await previousGuildMember.roles.remove(previousClan.roleId).catch(() => null);
+          }
+        }
+      }
+
+      let assignedRole = 'member';
+      if (clan.leaderId === target.id) {
+        assignedRole = 'leader';
+      } else if (clan.coLeaderIds.includes(target.id)) {
+        assignedRole = 'co-leader';
+      } else if (!clan.memberIds.includes(target.id)) {
+        clan.memberIds.push(target.id);
+      }
+
+      await clan.save();
+
+      targetDoc.clanId = clan._id;
+      targetDoc.role = assignedRole;
+      targetDoc.pendingInviteClanId = null;
+      targetDoc.invitedByUserId = null;
+      await targetDoc.save();
+
+      const guildMember = await guild.members.fetch(target.id).catch(() => null);
+      if (guildMember) {
+        if (clan.roleId) {
+          await guildMember.roles.add(clan.roleId).catch(() => null);
+        }
+
+        if (assignedRole === 'leader') {
+          if (cfg.leaderRoleId) {
+            await guildMember.roles.add(cfg.leaderRoleId).catch(() => null);
+          }
+          if (cfg.coLeaderRoleId) {
+            await guildMember.roles.remove(cfg.coLeaderRoleId).catch(() => null);
+          }
+        } else if (assignedRole === 'co-leader') {
+          if (cfg.coLeaderRoleId) {
+            await guildMember.roles.add(cfg.coLeaderRoleId).catch(() => null);
+          }
+          if (cfg.leaderRoleId) {
+            await guildMember.roles.remove(cfg.leaderRoleId).catch(() => null);
+          }
+        } else {
+          if (cfg.leaderRoleId) {
+            await guildMember.roles.remove(cfg.leaderRoleId).catch(() => null);
+          }
+          if (cfg.coLeaderRoleId) {
+            await guildMember.roles.remove(cfg.coLeaderRoleId).catch(() => null);
+          }
+        }
+      }
+
+      const moveText = previousClanName
+        ? `Moved from **${previousClanName}** to **${clanLabel(clan)}**.`
+        : `Added to **${clanLabel(clan)}**.`;
+
+      await logClanEvent(guild, `${interaction.user.tag} force-invited ${target.tag} to ${clanLabel(clan)}.`);
+
+      await interaction.editReply({
+        embeds: [buildSuccessEmbed('Force Invite Complete', `${target} ${moveText}`)]
       });
       return;
     }

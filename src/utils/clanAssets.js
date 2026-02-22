@@ -37,7 +37,10 @@ async function createClanAssets(guild, clanName, options = {}) {
     permissionOverwrites: [
       {
         id: guild.roles.everyone.id,
-        deny: [PermissionFlagsBits.ViewChannel],
+        deny: [
+          PermissionFlagsBits.ViewChannel,
+          PermissionFlagsBits.SendMessages
+        ],
         type: OverwriteType.Role
       },
       {
